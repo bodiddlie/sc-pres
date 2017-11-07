@@ -2,165 +2,175 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Styled Components</title>
+  <title>Styled Components</title>
 
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/cog.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/cog.css">
 
-	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-	<!-- Printing and PDF exports -->
-	<script>
-		var link = document.createElement('link');
-		link.rel = 'stylesheet';
-		link.type = 'text/css';
-		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-		document.getElementsByTagName('head')[0].appendChild(link);
-	</script>
-	<style>
-		.green {
-			color: #95C623;
-		}
-	</style>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <style>
+    .green {
+      color: #95C623;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="reveal">
-		<div class="slides">
-			<section>
-				<h2>&lt;💅&gt; Styled Components &lt;💅&gt;</h2>
-				<h4 style="color: #95C623;">Managing Styles in a Component Based World</h4>
-			</section>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>&lt;💅&gt; Styled Components &lt;💅&gt;</h2>
+        <h4 style="color: #95C623;">Managing Styles in a Component Based World</h4>
+      </section>
 
-			<section>
-				<h3>My Journey to Styled Components</h3>
-				<ul>
-					<li class="fragment">Work Projects - Angular 1.x + Bootstrap</li>
-					<li class="fragment">Personal Project - React + some dynamic styling</li>
-					<li class="fragment">Webpack + CSS + SASS</li>
-					<li class="fragment">Create-React-App - no more SASS</li>
-					<li class="fragment">Inline Styling</li>
-					<li class="fragment">Aphrodite, Radium, etc</li>
-				</ul>
-			</section>
+      <section>
+        <h3>My Journey to Styled Components</h3>
+        <ul>
+          <li class="fragment">Work Projects - Angular 1.x + Bootstrap</li>
+          <li class="fragment">Personal Project - React + some dynamic styling</li>
+          <li class="fragment">Webpack + CSS + SASS</li>
+          <li class="fragment">Create-React-App - no more SASS</li>
+          <li class="fragment">Inline Styling</li>
+          <li class="fragment">Aphrodite, Radium, etc</li>
+        </ul>
+      </section>
 
-			<section>
-				<h3>Separation image goes here</h3>
-			</section>
+      <section>
+        <h3>Separation of Concerns</h3>
+        <img src="cssinjs.png" />
+      </section>
 
-			<section>
-				<h2>Why Styled Components?</h2>
-			</section>
+      <section>
+        <h2>Why Styled Components?</h2>
+        <ul>
+          <li>Covers all CSS</li>
+          <li>Colocation</li>
+          <li>Dynamic Styling &amp; Extensible</li>
+        </ul>
+      </section>
 
-			<section>
-				<h4>Colocate Styles with Components</h4>
-				<pre><code>
-const thing = styled.div`
-	color: #cdcdcd;
+      <section>
+        <h4>Covers All CSS</h4>
+        <pre><code>
+const FlexContainer = styled.div`
+  display: flex;
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
 `
 
-const thing = styled.div`
-	color: #cdcdcd;
-`
-
-const thing = styled.div`
-	color: #cdcdcd;
-`
-</code></pre>
-			</section>
-
-			<section>
-				<h4>Dynamic Styling with Props</h4>
-				<pre><code>
-const thing = styled.div`
-	color: #cdcdcd;
-`
-
-const thing = styled.div`
-	color: #cdcdcd;
-`
-
-const thing = styled.div`
-	color: #cdcdcd;
+const HoverButton = styled.button`
+  background: white;
+  color: red;
+  border: 1px solid red;
+  &:hover {
+    background: red;
+    color: white;
+  }
 `
 </code></pre>
-			</section>
+      </section>
 
-			<section>
-				<h4>Extend Existing Components</h4>
-				<pre><code>
-const thing = styled.div`
-	color: #cdcdcd;
-`
+      <section>
+        <h4>Colocate Styles with Components</h4>
+        <pre><code class="html">
+const MyComponent = ({thingOne, thingTwo, handleClick}) => {
+  return (
+    &lt;FlexContainer&gt;
+      &lt;SomeComponent someProp={thingOne} /&gt;
+      &lt;OtherComponent thisProp={thingTwo} /&gt;
+      &lt;HoverButton onClick={handleClick}&gt;Suessify&lt;/HoverButton&gt;
+    &lt;/FlexContainer&gt;
+  )
+}
 
-const thing = styled.div`
-	color: #cdcdcd;
-`
+const FlexContainer = styled.div``
 
-const thing = styled.div`
-	color: #cdcdcd;
+const HoverButton = styled.button``
+</code></pre>
+      </section>
+
+      <section>
+        <h4>Dynamic Styling with Props</h4>
+        <pre><code>
+const DynamicButton = styled.button`
+  color: ${props => props.color || 'red'};
 `
 </code></pre>
-			</section>
+      </section>
 
-			<section>
-				<h4>Covers All CSS</h4>
-				<pre><code>
-const thing = styled.div`
-	color: #cdcdcd;
+      <section>
+        <h4>Extend Existing Components</h4>
+        <pre><code>
+//React-Router Link Component
+const thing = styled(Link)`
+  color: papayawhip;
+  text-decoration: none;
 `
 
-const thing = styled.div`
-	color: #cdcdcd;
+//Extend an existing styled component
+const BlackHoverButton = HoverButton.extend`
+  color: black;
 `
 
-const thing = styled.div`
-	color: #cdcdcd;
-`
+render(
+  &lt;div&gt;
+    &lt;BlackHoverButton&gt;Extended!&lt;/BlackHoverButton&gt;
+  &lt;/div&gt;
+)
 </code></pre>
-			</section>
+      </section>
 
-			<section>
-				<h4>Tools</h4>
-				<ul>
-					<li class="fragment">Syntax highlighting</li>
-					<li class="fragment">Polished</li>
-					<li class="fragment">jest-styled-components</li>
-				</ul>
-			</section>
 
-			<section>
-				<h4>Problems / Cons</h4>
-				<ul>
-					<li class="fragment">Naming Things</li>
-					<li class="fragment">Autocomplete</li>
-					<li class="fragment">Performance</li>
-				</ul>
-			</section>
-		</div>
-	</div>
+      <section>
+        <h4>Tools</h4>
+        <ul>
+          <li class="fragment">Syntax highlighting</li>
+          <li class="fragment">Polished</li>
+          <li class="fragment">jest-styled-components</li>
+        </ul>
+      </section>
 
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.js"></script>
+      <section>
+        <h4>Problems / Cons</h4>
+        <ul>
+          <li class="fragment">Naming Things</li>
+          <li class="fragment">Autocomplete</li>
+        </ul>
+      </section>
+    </div>
+  </div>
 
-	<script>
-		// More info https://github.com/hakimel/reveal.js#configuration
-		Reveal.initialize({
-			history: true,
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
 
-			// More info https://github.com/hakimel/reveal.js#dependencies
-			dependencies: [
-				{ src: 'plugin/markdown/marked.js' },
-				{ src: 'plugin/markdown/markdown.js' },
-				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-			]
-		});
-	</script>
+  <script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      history: true,
+
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ]
+    });
+  </script>
 </body>
 
 </html>
