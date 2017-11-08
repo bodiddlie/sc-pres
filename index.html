@@ -49,17 +49,41 @@
       </section>
 
       <section>
-        <h3>Separation of Concerns</h3>
-        <img src="cssinjs.png" />
+        <h4>What is Styled Components?</h4>
+        <ul>
+          <li class="fragment">Created by Max Stoiber &amp; Glen Maddern</li>
+          <li class="fragment">Create React components for styling with plain CSS</li>
+          <li class="fragment">Tagged Template Literals
+            <pre class="fragment"><code class="js">callFunction`template string ${me} magic`</code></pre>
+            <pre class="fragment"><code class="js">callFunction(['template string ', ' magic'], me)</code></pre>
+          </li>
+          <li class="fragment">CSS Contents get hashed and injected into head</li>
+        </ul>
       </section>
 
       <section>
         <h2>Why Styled Components?</h2>
         <ul>
+          <li>Write plain, old CSS</li>
           <li>Covers all CSS</li>
-          <li>Colocation</li>
+          <li>Separation of Concerns &amp; Colocation</li>
           <li>Dynamic Styling &amp; Extensible</li>
         </ul>
+      </section>
+
+      <section>
+        <h4>It's just CSS!</h4>
+        <pre><code>
+import styled from 'styled-components'
+
+const MyButton = styled.button`
+  color: red;
+  outline: none;
+  background: white;
+  border: 1px solid red;
+  border-radius: 5px;
+`
+</code></pre>
       </section>
 
       <section>
@@ -85,8 +109,16 @@ const HoverButton = styled.button`
       </section>
 
       <section>
+        <h3>Separation of Concerns</h3>
+        <img src="cssinjs.png" />
+      </section>
+
+      <section>
         <h4>Colocate Styles with Components</h4>
         <pre><code class="html">
+const FlexContainer = styled.div`...`
+const HoverButton = styled.button`...`
+
 const MyComponent = ({thingOne, thingTwo, handleClick}) => {
   return (
     &lt;FlexContainer&gt;
@@ -96,10 +128,6 @@ const MyComponent = ({thingOne, thingTwo, handleClick}) => {
     &lt;/FlexContainer&gt;
   )
 }
-
-const FlexContainer = styled.div``
-
-const HoverButton = styled.button``
 </code></pre>
       </section>
 
@@ -109,6 +137,9 @@ const HoverButton = styled.button``
 const DynamicButton = styled.button`
   color: ${props => props.color || 'red'};
 `
+
+&lt;DynamicButton /&gt; //red
+&lt;DynamicButton color="cornsilk" /&gt; //kinda yellow brown?
 </code></pre>
       </section>
 
@@ -116,7 +147,7 @@ const DynamicButton = styled.button`
         <h4>Extend Existing Components</h4>
         <pre><code>
 //React-Router Link Component
-const thing = styled(Link)`
+const PrettyLink = styled(Link)`
   color: papayawhip;
   text-decoration: none;
 `
