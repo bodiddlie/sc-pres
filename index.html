@@ -39,8 +39,7 @@
       <section>
         <h3>My Journey to Styled Components</h3>
         <ul>
-          <li class="fragment">Work Projects - Angular 1.x + Bootstrap</li>
-          <li class="fragment">Personal Project - React + some dynamic styling</li>
+          <li class="fragment">Angular 1.x + Bootstrap</li>
           <li class="fragment">Webpack + CSS + SASS</li>
           <li class="fragment">Create-React-App - no more SASS</li>
           <li class="fragment">Inline Styling</li>
@@ -54,8 +53,8 @@
           <li class="fragment">Created by Max Stoiber &amp; Glen Maddern</li>
           <li class="fragment">Create React components for styling with plain CSS</li>
           <li class="fragment">Tagged Template Literals
-            <pre class="fragment"><code class="js">callFunction`template string ${me} magic`</code></pre>
-            <pre class="fragment"><code class="js">callFunction(['template string ', ' magic'], me)</code></pre>
+            <pre class="fragment"><code class="js">someFunction`template string ${me} magic`</code></pre>
+            <pre class="fragment"><code class="js">someFunction(['template string ', ' magic'], me)</code></pre>
           </li>
           <li class="fragment">CSS Contents get hashed and injected into head</li>
         </ul>
@@ -73,7 +72,7 @@
 
       <section>
         <h4>It's just CSS!</h4>
-        <pre><code>
+        <pre><code class="js">
 import styled from 'styled-components'
 
 const MyButton = styled.button`
@@ -83,6 +82,8 @@ const MyButton = styled.button`
   border: 1px solid red;
   border-radius: 5px;
 `
+
+&lt;MyButton onClick={() => console.log('clicked')}&gt;Click Me&lt;/MyButton&gt;
 </code></pre>
       </section>
 
@@ -156,12 +157,6 @@ const PrettyLink = styled(Link)`
 const BlackHoverButton = HoverButton.extend`
   color: black;
 `
-
-render(
-  &lt;div&gt;
-    &lt;BlackHoverButton&gt;Extended!&lt;/BlackHoverButton&gt;
-  &lt;/div&gt;
-)
 </code></pre>
       </section>
 
@@ -180,6 +175,15 @@ render(
         <ul>
           <li class="fragment">Naming Things</li>
           <li class="fragment">Autocomplete</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Thanks!</h4>
+        <ul style="list-style:none; text-align: center;">
+          <li>github.com/bodiddlie</li>
+          <li>Slides up on GitHub bodiddlie.github.io/sc-pres</li>
+          <li>Twitter - @bodiddlie</li>
         </ul>
       </section>
     </div>
